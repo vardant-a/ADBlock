@@ -24,6 +24,8 @@
 		0E16D03D2AEBD1E100D3ACC9 /* LastOnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D03C2AEBD1E100D3ACC9 /* LastOnboardingPresenter.swift */; };
 		0E16D0402AEBD47400D3ACC9 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D03F2AEBD47400D3ACC9 /* Onboarding.swift */; };
 		0E16D0422AEBE66800D3ACC9 /* TransitionTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D0412AEBE66800D3ACC9 /* TransitionTitleButton.swift */; };
+		0E16D0452AEBF89100D3ACC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D0442AEBF89100D3ACC9 /* MainViewController.swift */; };
+		0E16D0472AEBF93100D3ACC9 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D0462AEBF93100D3ACC9 /* MainPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		0E16D03C2AEBD1E100D3ACC9 /* LastOnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastOnboardingPresenter.swift; sourceTree = "<group>"; };
 		0E16D03F2AEBD47400D3ACC9 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		0E16D0412AEBE66800D3ACC9 /* TransitionTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionTitleButton.swift; sourceTree = "<group>"; };
+		0E16D0442AEBF89100D3ACC9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0E16D0462AEBF93100D3ACC9 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 			children = (
 				0E00C4C92AEBAE3500EAA6BE /* Onboarding */,
 				0E00C4BA2AEBA40100EAA6BE /* LastOnboarding */,
+				0E16D0432AEBF88000D3ACC9 /* Main */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -178,6 +183,15 @@
 				0E16D03F2AEBD47400D3ACC9 /* Onboarding.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0E16D0432AEBF88000D3ACC9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0E16D0442AEBF89100D3ACC9 /* MainViewController.swift */,
+				0E16D0462AEBF93100D3ACC9 /* MainPresenter.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,11 +266,13 @@
 			files = (
 				0E00C4BE2AEBA43700EAA6BE /* StandardButton.swift in Sources */,
 				0E00C4A62AEBA20200EAA6BE /* LastOnboardingViewController.swift in Sources */,
+				0E16D0472AEBF93100D3ACC9 /* MainPresenter.swift in Sources */,
 				0E00C4C02AEBA58200EAA6BE /* UIColor+EX.swift in Sources */,
 				0E00C4C22AEBA5C100EAA6BE /* UIVIew+EX.swift in Sources */,
 				0E00C4CD2AEBAF6400EAA6BE /* OnboardingPresenter.swift in Sources */,
 				0E00C4C82AEBA6FD00EAA6BE /* ColorSet.swift in Sources */,
 				0E16D03D2AEBD1E100D3ACC9 /* LastOnboardingPresenter.swift in Sources */,
+				0E16D0452AEBF89100D3ACC9 /* MainViewController.swift in Sources */,
 				0E00C4C42AEBA62900EAA6BE /* Constants.swift in Sources */,
 				0E00C4C62AEBA6C800EAA6BE /* ImageSet.swift in Sources */,
 				0E00C4CB2AEBAEC900EAA6BE /* OnboardingViewController.swift in Sources */,
