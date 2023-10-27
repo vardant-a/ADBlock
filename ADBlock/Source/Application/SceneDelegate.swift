@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MainViewController()
+        window?.rootViewController = buildOnboarding()
         window?.overrideUserInterfaceStyle = .dark
         window?.makeKeyAndVisible()
     }
@@ -28,4 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {}
 
     func sceneDidEnterBackground(_ scene: UIScene) {}
+}
+
+extension SceneDelegate {
+    func buildOnboarding() -> UIViewController {
+        let presenter: OnboardingPresenter = OnboardingPresenterImpl(type: .first)
+        let view = OnboardingViewController(presenter: presenter)
+        presenter.injectView(with: view)
+        
+        return view
+    }
 }
