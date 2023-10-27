@@ -93,7 +93,7 @@ final class LastOnboardingViewController: UIViewController {
     }
     
     @objc private func tuppedTransitionLabel() {
-        print("TUP LABEL")
+        presenter.tuppedTransitionTitle()
     }
     
     // MARK: - Layout
@@ -108,7 +108,7 @@ final class LastOnboardingViewController: UIViewController {
                 equalTo: view.trailingAnchor),
             onboardingImageView.heightAnchor.constraint(
                 equalTo: view.heightAnchor,
-                multiplier: 0.55),
+                multiplier: LocalConstants.multiplier),
             
             onboardingTitleLabel.topAnchor.constraint(
                 equalTo: onboardingImageView.bottomAnchor,
@@ -120,7 +120,7 @@ final class LastOnboardingViewController: UIViewController {
                 equalTo: view.trailingAnchor,
                 constant: -Constants.horizontalOffset),
             onboardingTitleLabel.heightAnchor.constraint(
-                equalToConstant: 28.64),
+                equalToConstant: LocalConstants.titleHight),
             
             onboardingMessageLabel.topAnchor.constraint(
                 equalTo: onboardingTitleLabel.bottomAnchor,
@@ -143,9 +143,9 @@ final class LastOnboardingViewController: UIViewController {
                 equalTo: termsOfServiceLabel.topAnchor,
                 constant: -Constants.verticalOffset / 2),
             signatureLabel.widthAnchor.constraint(
-                equalToConstant: 285),
+                equalToConstant: LocalConstants.standardWidth),
             signatureLabel.heightAnchor.constraint(
-                equalToConstant: 34),
+                equalToConstant: LocalConstants.signatureHeight),
             
             tryNowButton.centerXAnchor.constraint(
                 equalTo: view.centerXAnchor),
@@ -153,6 +153,15 @@ final class LastOnboardingViewController: UIViewController {
                 equalTo: signatureLabel.topAnchor,
                 constant: -Constants.verticalOffset)
             ])
+    }
+    
+    // MARK: - LocalConstants
+
+    private enum LocalConstants {
+        static let standardWidth: CGFloat = 285
+        static let signatureHeight: CGFloat = 34
+        static let multiplier: CGFloat = 0.55
+        static let titleHight: CGFloat = 28.64
     }
 }
 

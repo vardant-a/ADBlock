@@ -89,7 +89,7 @@ final class OnboardingViewController: UIViewController {
                 equalTo: view.trailingAnchor),
             onboardingImageView.heightAnchor.constraint(
                 equalTo: view.heightAnchor,
-                multiplier: 0.55),
+                multiplier: LocalConstants.multiplier),
             
             onboardingTitleLabel.topAnchor.constraint(
                 equalTo: onboardingImageView.bottomAnchor,
@@ -101,7 +101,7 @@ final class OnboardingViewController: UIViewController {
                 equalTo: view.trailingAnchor,
                 constant: -Constants.horizontalOffset),
             onboardingTitleLabel.heightAnchor.constraint(
-                equalToConstant: 28.64),
+                equalToConstant: LocalConstants.titleHight),
             
             onboardingMessageLabel.topAnchor.constraint(
                 equalTo: onboardingTitleLabel.bottomAnchor,
@@ -119,6 +119,13 @@ final class OnboardingViewController: UIViewController {
                 equalTo: view.safeAreaLayoutGuide.bottomAnchor, 
                 constant: -Constants.verticalOffset / 2)
         ])
+    }
+    
+    // MARK: - LocalConstants
+
+    private enum LocalConstants {
+        static let multiplier: CGFloat = 0.55
+        static let titleHight: CGFloat = 28.64
     }
 }
 

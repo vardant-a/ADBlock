@@ -12,6 +12,7 @@ protocol LastOnboardingPresenter: AnyObject {
     
     func viewDidLoad()
     func tuppedButton()
+    func tuppedTransitionTitle()
 }
 
 final class LastOnboardingPresenterImpl {
@@ -53,5 +54,9 @@ extension LastOnboardingPresenterImpl: LastOnboardingPresenter {
     
     func tuppedButton() {
         view?.transition(to: configureNewModule(), animated: true)
+    }
+    
+    func tuppedTransitionTitle() {
+        print("tupped title")
     }
 }
