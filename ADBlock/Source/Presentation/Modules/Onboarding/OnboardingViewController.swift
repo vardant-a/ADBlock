@@ -24,26 +24,28 @@ final class OnboardingViewController: UIViewController {
     }(UIImageView())
     
     private var onboardingTitleLabel: UILabel = {
-        $0.textColor = .white
-        $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        $0.textColor = ColorSet.white
+        $0.font = UIFont.systemFont(
+            ofSize: LocalConstants.titleFont,
+            weight: .bold)
         $0.lineBreakMode = NSLineBreakMode.byWordWrapping
-        $0.numberOfLines = 0
+        $0.numberOfLines = LocalConstants.numberOfLines
         return $0
     }(UILabel())
     
     private var onboardingMessageLabel: UILabel = {
-        $0.textColor = .white
+        $0.textColor = ColorSet.white
         $0.textAlignment = .left
-        $0.font = UIFont.systemFont(ofSize: 18)
+        $0.font = UIFont.systemFont(ofSize: LocalConstants.messageFont)
         $0.lineBreakMode = NSLineBreakMode.byWordWrapping
-        $0.numberOfLines = 0
+        $0.numberOfLines = LocalConstants.numberOfLines
         return $0
     }(UILabel())
     
     // MARK: - Private lazy Properties
 
     private lazy var nextButton = StandardButton(
-        self, title: Localizable.Button.next, accentColor: .white,
+        self, title: Localizable.Button.next, accentColor: ColorSet.white,
         color: ColorSet.accent, action: #selector(tuppedButton))
     
     // MARK: - Init
@@ -126,6 +128,10 @@ final class OnboardingViewController: UIViewController {
     private enum LocalConstants {
         static let multiplier: CGFloat = 0.55
         static let titleHight: CGFloat = 28.64
+        static let animationDuration: CGFloat = 1
+        static let titleFont: CGFloat = 24
+        static let messageFont: CGFloat = 18
+        static let numberOfLines = 0
     }
 }
 
@@ -134,7 +140,8 @@ final class OnboardingViewController: UIViewController {
 extension OnboardingViewController: OnboardingViewProtocol {
     func updateContent(_ model: OnboardingModel) {
         UIView.transition(
-            with: onboardingImageView, duration: 1.0, options: .transitionCrossDissolve
+            with: onboardingImageView, duration: LocalConstants.animationDuration,
+            options: .transitionCrossDissolve
         ) { [weak self] in
             guard let self = self else { return }
             onboardingImageView.image = model.image

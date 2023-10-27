@@ -17,9 +17,11 @@ final class MainViewController: UIViewController {
     private let presenter: MainPresenter
     
     private let titleLabel: UILabel = {
-        $0.textColor = .white
-        $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        $0.numberOfLines = 0
+        $0.textColor = ColorSet.white
+        $0.font = UIFont.systemFont(
+            ofSize: LocalConstants.titleFont,
+            weight: .bold)
+        $0.numberOfLines = LocalConstants.numberOfLines
         return $0
     }(UILabel())
     
@@ -80,7 +82,7 @@ final class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: 30),
+                constant: Constants.verticalOffset * 1.5),
             titleLabel.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
                 constant: Constants.horizontalOffset),
@@ -106,13 +108,22 @@ final class MainViewController: UIViewController {
                 constant: -Constants.verticalOffset / 2)
         ])
     }
+    
+    // MARK: - LocalConstants
+    
+    private enum LocalConstants {
+        static let cellCount = 3
+        static let cellHeight: CGFloat = 139
+        static let titleFont: CGFloat = 24
+        static let numberOfLines = 0
+    }
 }
 
     // MARK: - UICollectionViewDataSource
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return LocalConstants.cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -130,7 +141,9 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: propertyCollectionView.frame.width - 32, height: 139)
+        return CGSize(
+            width: propertyCollectionView.frame.width - Constants.horizontalOffset * 2,
+            height: LocalConstants.cellHeight)
     }
 }
 

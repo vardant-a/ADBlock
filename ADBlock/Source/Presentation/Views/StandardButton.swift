@@ -16,7 +16,9 @@ final class StandardButton: UIButton {
     ) {
         self.init(frame: .zero)
         setTitle(title, for: .normal)
-        titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        titleLabel?.font = UIFont.systemFont(
+            ofSize: LocalConstants.customFont,
+            weight: .bold)
         setTitleColor(accentColor, for: .normal)
         addTarget(target, action: action, for: .touchUpInside)
         backgroundColor = color
@@ -46,5 +48,6 @@ final class StandardButton: UIButton {
         static let height: CGFloat = 44
         static let width: CGFloat = 285
         static let cornerRadius: CGFloat = 20
+        static let customFont: CGFloat = 16
     }
 }

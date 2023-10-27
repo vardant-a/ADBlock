@@ -14,11 +14,14 @@ final class PropertyCell: UICollectionViewCell {
     
     override var isHighlighted: Bool {
         didSet {
-            UIView.animate(withDuration: 0.5) { [weak self] in
+            UIView.animate(withDuration: LocalConstants.animationDuration) { [weak self] in
                 guard let self = self else { return }
-                self.alpha = self.isHighlighted ? 0.7 : 1.0
-                self.transform = self.isHighlighted 
-                ? CGAffineTransform(scaleX: 0.95, y: 0.95)
+                self.alpha = self.isHighlighted
+                ? LocalConstants.lowAlpha
+                : LocalConstants.standardAlpha
+                self.transform = self.isHighlighted
+                ? CGAffineTransform(scaleX: LocalConstants.scale,
+                                    y: LocalConstants.scale)
                 : .identity
             }
         }
@@ -27,12 +30,16 @@ final class PropertyCell: UICollectionViewCell {
     // MARK: - Private Properties
     
     private var titleCellLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: LocalConstants.titleFont, weight: .bold)
+        $0.font = UIFont.systemFont(
+            ofSize: LocalConstants.titleFont,
+            weight: .bold)
+        $0.textColor = ColorSet.white
         return $0
     }(UILabel())
     
     private var messageCellLabel: UILabel = {
         $0.font = UIFont.systemFont(ofSize: LocalConstants.messageFont)
+        $0.textColor = ColorSet.white
         return $0
     }(UILabel())
 
@@ -121,5 +128,10 @@ final class PropertyCell: UICollectionViewCell {
         static let cornerRadius: CGFloat = 34
         static let lowImageSize: CGFloat = 56
         static let bigImageSize: CGFloat = 138
+        
+        static let lowAlpha: CGFloat = 0.7
+        static let standardAlpha: CGFloat = 1
+        static let scale: CGFloat = 0.95
+        static let animationDuration: CGFloat = 0.5
     }
 }

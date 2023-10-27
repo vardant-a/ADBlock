@@ -24,28 +24,30 @@ final class LastOnboardingViewController: UIViewController {
     }(UIImageView())
     
     private var onboardingTitleLabel: UILabel = {
-        $0.textColor = .white
-        $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        $0.textColor = ColorSet.white
+        $0.font = UIFont.systemFont(
+            ofSize: LocalConstants.titleFont,
+            weight: .bold)
         $0.lineBreakMode = NSLineBreakMode.byWordWrapping
-        $0.numberOfLines = 0
+        $0.numberOfLines = LocalConstants.numberOfLines
         return $0
     }(UILabel())
     
     private var onboardingMessageLabel: UILabel = {
-        $0.textColor = .white
+        $0.textColor = ColorSet.white
         $0.textAlignment = .left
-        $0.font = UIFont.systemFont(ofSize: 18)
+        $0.font = UIFont.systemFont(ofSize: LocalConstants.messageFont)
         $0.lineBreakMode = NSLineBreakMode.byWordWrapping
-        $0.numberOfLines = 0
+        $0.numberOfLines = LocalConstants.numberOfLines
         return $0
     }(UILabel())
     
     private var signatureLabel: UILabel = {
-        $0.textColor = .darkGray
+        $0.textColor = ColorSet.lightGray
         $0.textAlignment = .center
-        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.font = UIFont.systemFont(ofSize: LocalConstants.signatureFont)
         $0.lineBreakMode = NSLineBreakMode.byWordWrapping
-        $0.numberOfLines = 0
+        $0.numberOfLines = LocalConstants.numberOfLines
         return $0
     }(UILabel())
     
@@ -57,7 +59,7 @@ final class LastOnboardingViewController: UIViewController {
         action: #selector(tuppedTransitionLabel))
 
     private lazy var tryNowButton = StandardButton(
-        self, title: Localizable.Button.tryNow, accentColor: .white,
+        self, title: Localizable.Button.tryNow, accentColor: ColorSet.white,
         color: ColorSet.gold, action: #selector(tuppedButton))
 
     // MARK: - Init
@@ -162,6 +164,10 @@ final class LastOnboardingViewController: UIViewController {
         static let signatureHeight: CGFloat = 34
         static let multiplier: CGFloat = 0.55
         static let titleHight: CGFloat = 28.64
+        static let titleFont: CGFloat = 24
+        static let messageFont: CGFloat = 18
+        static let signatureFont: CGFloat = 14
+        static let numberOfLines = 0
     }
 }
 
