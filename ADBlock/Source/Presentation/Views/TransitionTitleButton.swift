@@ -12,7 +12,10 @@ final class TransitionTitleButton: UIButton {
     
     // MARK: - Init
     
-    convenience init(_ target: Any?, title: String, accentColor: UIColor, action: Selector) {
+    convenience init(
+        _ target: Any?, title: String, accentColor: UIColor,
+        action: Selector
+    ) {
         self.init(frame: .zero)
         self.accentColor = accentColor
         setTitle(title, for: .normal)
