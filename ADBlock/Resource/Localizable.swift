@@ -13,6 +13,7 @@ enum Localizable {
         static let secondOnboard = "No tracking"
         static let thirdOnboard = "No ads"
         static let lastOnboard = "No trace"
+        static let mainModule = "Al Secure protects your browser"
     }
     
     enum Message {
@@ -34,5 +35,14 @@ enum Localizable {
     enum Button {
         static let next = "Next"
         static let tryNow = "Try now"
+    }
+    
+    enum Cell {
+        static let firstTitle = "Protected from tracking"
+        static let firstMessage = "You are protected from tracking"
+        static let secondTitle = "No ADS"
+        static let secondMessage = "Ads are blocked"
+        static let thirdTitle = "Excellent browser history"
+        static let thirdMessage = "Your browser history is excellent"
     }
 }

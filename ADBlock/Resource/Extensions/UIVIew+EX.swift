@@ -14,4 +14,12 @@ extension UIView {
             addSubview($0)
         }
     }
+    
+    func addVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
 }

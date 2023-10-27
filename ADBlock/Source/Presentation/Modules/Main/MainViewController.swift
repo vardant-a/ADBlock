@@ -8,13 +8,39 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-    func updateContent()
+    func updateContent(title: String)
 }
 
 final class MainViewController: UIViewController {
     // MARK: - Private Properties
 
     private let presenter: MainPresenter
+    
+    private let titleLabel: UILabel = {
+        $0.textColor = .white
+        $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        $0.numberOfLines = 0
+        return $0
+    }(UILabel())
+    
+    private let collectionLayout: UICollectionViewFlowLayout = .init()
+    
+    // MARK: - Private lazy Properties
+    
+    private lazy var propertyCollectionView: UICollectionView = {
+        collectionLayout.scrollDirection = .vertical
+        $0.register(
+            PropertyCell.self,
+            forCellWithReuseIdentifier: PropertyCell.identifier)
+        $0.backgroundColor = .clear
+        $0.dataSource = self
+        $0.delegate = self
+        return $0
+    }(UICollectionView(frame: .zero, collectionViewLayout: collectionLayout))
+
+    private lazy var termsOfServiceLabel = TransitionTitleButton(
+        self, title: Localizable.Message.termsOfService, accentColor: ColorSet.accent,
+        action: #selector(tuppedTransitionLabel))
 
     // MARK: - Init
 
@@ -31,14 +57,96 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = ColorSet.background
+        view.addSubviews(
+            titleLabel, propertyCollectionView, termsOfServiceLabel)
         presenter.viewDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupLayout()
+    }
+    
+    // MARK: - @Objc Methods
+    
+    @objc private func tuppedTransitionLabel() {
+        presenter.tuppedTransitionTitle()
+    }
+    
+    // MARK: - Layout
+
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor,
+                constant: 30),
+            titleLabel.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constants.horizontalOffset),
+            titleLabel.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -Constants.horizontalOffset),
+            
+            propertyCollectionView.topAnchor.constraint(
+                equalTo: titleLabel.bottomAnchor,
+                constant: Constants.verticalOffset),
+            propertyCollectionView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor),
+            propertyCollectionView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor),
+            propertyCollectionView.bottomAnchor.constraint(
+                equalTo: termsOfServiceLabel.topAnchor,
+                constant: -Constants.verticalOffset),
+            
+            termsOfServiceLabel.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor),
+            termsOfServiceLabel.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                constant: -Constants.verticalOffset / 2)
+        ])
+    }
+}
+
+    // MARK: - UICollectionViewDataSource
+
+extension MainViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PropertyCell.identifier,
+                for: indexPath) as? PropertyCell else { return UICollectionViewCell() }
+        let cellModel = presenter.propertyCellContent[indexPath.item]
+        cell.configure(model: cellModel)
+        
+        return cell
+    }
+}
+
+    // MARK: UICollectionViewDelegateFlowLayout
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: propertyCollectionView.frame.width - 32, height: 139)
+    }
+}
+
+    // MARK: - UICollectionViewDelegate
+
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let selectedCell = SelectedCell(rawValue: indexPath.item) else { return }
+        presenter.tuppedCell(selectedCell)
     }
 }
 
     // MARK: - MainViewProtocol
 
 extension MainViewController: MainViewProtocol {
-    func updateContent() {
+    func updateContent(title: String) {
+        titleLabel.text = title
     }
 }

@@ -8,10 +8,19 @@
 import UIKit
 
 protocol MainPresenter: AnyObject {
+    var propertyCellContent: [PropertyCellModel] { get }
     func injectView(with view: MainViewProtocol)
     
     func viewDidLoad()
-    func tuppedButton()
+    func tuppedCell(_ cell: SelectedCell)
+    func tuppedTransitionTitle()
+}
+
+enum SelectedCell: Int {
+    case first
+    case second
+    case third
+    case notFound
 }
 
 final class MainPresenterImpl {
@@ -33,11 +42,28 @@ final class MainPresenterImpl {
     // MARK: - MainPresenter
 
 extension MainPresenterImpl: MainPresenter {
-    func viewDidLoad() {
-        view?.updateContent()
+    var propertyCellContent: [PropertyCellModel] {
+        return PropertyCellModel.getCellModels()
     }
     
-    func tuppedButton() {
-        print("TryNow")
+    func viewDidLoad() {
+        view?.updateContent(title: Localizable.Title.mainModule)
+    }
+    
+    func tuppedCell(_ cell: SelectedCell) {
+        switch cell {
+        case .first:
+            print("tupped first cell")
+        case .second:
+            print("tupped second cell")
+        case .third:
+            print("tupped third cell")
+        case .notFound:
+            break
+        }
+    }
+    
+    func tuppedTransitionTitle() {
+        print("tupped title")
     }
 }

@@ -14,4 +14,11 @@ enum ImageSet {
         static let third = UIImage(named: "first")
         static let last = UIImage(named: "last")
     }
+    
+    enum Cell {
+        static let first = UIImage(named: "firstCell")
+        static let second = UIImage(named: "secondCell")
+        static let third = UIImage(named: "thirdCell")
+        static let done = UIImage(named: "done")
+    }
 }

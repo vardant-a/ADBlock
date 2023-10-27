@@ -26,6 +26,8 @@
 		0E16D0422AEBE66800D3ACC9 /* TransitionTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D0412AEBE66800D3ACC9 /* TransitionTitleButton.swift */; };
 		0E16D0452AEBF89100D3ACC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D0442AEBF89100D3ACC9 /* MainViewController.swift */; };
 		0E16D0472AEBF93100D3ACC9 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D0462AEBF93100D3ACC9 /* MainPresenter.swift */; };
+		0E16D0492AEC3E3600D3ACC9 /* PropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D0482AEC3E3600D3ACC9 /* PropertyCell.swift */; };
+		0E16D04B2AEC4A7500D3ACC9 /* PropertyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16D04A2AEC4A7500D3ACC9 /* PropertyCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		0E16D0412AEBE66800D3ACC9 /* TransitionTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionTitleButton.swift; sourceTree = "<group>"; };
 		0E16D0442AEBF89100D3ACC9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0E16D0462AEBF93100D3ACC9 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		0E16D0482AEC3E3600D3ACC9 /* PropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCell.swift; sourceTree = "<group>"; };
+		0E16D04A2AEC4A7500D3ACC9 /* PropertyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 			children = (
 				0E00C4BD2AEBA43700EAA6BE /* StandardButton.swift */,
 				0E16D0412AEBE66800D3ACC9 /* TransitionTitleButton.swift */,
+				0E16D0482AEC3E3600D3ACC9 /* PropertyCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				0E16D03F2AEBD47400D3ACC9 /* Onboarding.swift */,
+				0E16D04A2AEC4A7500D3ACC9 /* PropertyCellModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,6 +272,8 @@
 			files = (
 				0E00C4BE2AEBA43700EAA6BE /* StandardButton.swift in Sources */,
 				0E00C4A62AEBA20200EAA6BE /* LastOnboardingViewController.swift in Sources */,
+				0E16D04B2AEC4A7500D3ACC9 /* PropertyCellModel.swift in Sources */,
+				0E16D0492AEC3E3600D3ACC9 /* PropertyCell.swift in Sources */,
 				0E16D0472AEBF93100D3ACC9 /* MainPresenter.swift in Sources */,
 				0E00C4C02AEBA58200EAA6BE /* UIColor+EX.swift in Sources */,
 				0E00C4C22AEBA5C100EAA6BE /* UIVIew+EX.swift in Sources */,
