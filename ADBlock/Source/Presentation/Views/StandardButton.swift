@@ -33,6 +33,7 @@ final class StandardButton: UIButton {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: LocalConstants.height),
