@@ -13,6 +13,7 @@ enum ColorSet {
     static let background = UIColor(hexString: "#151715", alpha: 1)
     static let white = UIColor.white
     static let lightGray = UIColor.lightGray
+    static let black = UIColor.black
     
     static let firstCellTop = UIColor(hexString: "#2F97DE", alpha: 1)
     static let firstCellBottom = UIColor(hexString: "#071620", alpha: 1)
